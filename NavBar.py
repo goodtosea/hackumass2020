@@ -35,6 +35,7 @@ class NavBar:
 
 
     def saveFileAs(self, fileName, chart):
+
         # Creates existing file. Error message will show when trying to create fileName that already exists.
         # Save file in the following format
         #    Consideration
