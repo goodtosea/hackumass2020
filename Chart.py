@@ -14,6 +14,12 @@ class Chart:
     def setConsideration(self, cons):                # Sets the consideration
         self.consideration = cons
 
+    def getProsList(self):                           # Returns the pros list
+        return self.prosList
+
+    def getConsList(self):                           # Returns the cons list
+        return self.consList
+
     def prosAddFactor(self, factor):                 # Adds a factor to the list of pros
         self.prosList.append(factor)
 
@@ -36,7 +42,7 @@ class Chart:
             consValue += f.getFactorValue
 
         # Initializes the variables for the judgement
-        suggestion = "No suggestion can be made at this time";
+        suggestion = "No suggestion can be made at this time"
         suggValue = prosValue / (prosValue + consValue)
 
         # Compares suggested values to a list of ratios, generating a suggestion
