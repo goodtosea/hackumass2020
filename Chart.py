@@ -14,6 +14,12 @@ class Chart:
     def setConsideration(self, cons):                # Sets the consideration
         self.consideration = cons
 
+    def getProsList(self):                           # Returns the pros list
+        return self.prosList
+
+    def getConsList(self):                           # Returns the cons list
+        return self.consList
+
     def prosAddFactor(self, factor):                 # Adds a factor to the list of pros
         self.prosList.append(factor)
 
