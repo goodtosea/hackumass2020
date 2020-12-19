@@ -22,7 +22,7 @@ class Chart:
 
     def consAddFactor(self, factor):                 # Adds a factor to the list of cons
         self.consList.append(factor)
-
+        
     def consRemoveFactor(self, factor):              # Removes a factor from the list of cons
         self.consList.remove(factor)
 
