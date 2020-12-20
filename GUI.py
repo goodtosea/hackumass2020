@@ -10,10 +10,18 @@ root = Tk()
 root.title("valueOf")
 root.geometry("1200x660")
 
+
+# class GUI():
+#     def __init__(self, chart):
+#         self.chart = chart
+
+
 # Create New File Function
 # Creates an empty chart and draws it
 def newFile():
-    drawChart(Chart())
+    chart = Chart()
+    drawChart(chart)
+    # drawChart(Chart())
 
 
 # Uses file dialog and opens a file
@@ -55,6 +63,7 @@ def exitProgram():
     quit()
 
 
+
 # Draws a given chart in the window
 def drawChart(chart):
     for widget in root.winfo_children():
@@ -84,6 +93,9 @@ def drawChart(chart):
         value_widget.current(pros[i].getFactorValue()-1)
         value_widget.grid(column=2, row=i+3)
 
+    # Pro add button
+    Button(root, text="+", command=pressedNewEntry).grid(column=1, columnspan=2, row=len(pros)+3)
+
     # Draws each of the con factors as a label with a corresponding combobox for each value
     cons = chart.getConsList()
     for i in range(len(cons)):
@@ -95,6 +107,14 @@ def drawChart(chart):
         value_widget["values"] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
         value_widget.current(cons[i].getFactorValue()-1)
         value_widget.grid(column=5, row=i+3)
+
+    # Con add button
+    Button(root, text="+", command=pressedNewEntry).grid(column=4, columnspan=2, row=len(cons)+3)
+
+
+# Adds a new entry to the table
+def pressedNewEntry():
+    x = 5
 
 
 # Draws the frame (outside of the window) for the program
@@ -134,8 +154,8 @@ def drawFrame():
 
 
 # Test chart
-# test_chart = Chart()
-# test_chart.setConsideration("Should I walk my dog?")
+# temp_chart = Chart()
+# temp_chart.setConsideration("Should I walk my dog?")
 # f1 = Factor()
 # f1.setFactorName("Exercise")
 # f1.setFactorValue(1)
@@ -146,10 +166,9 @@ def drawFrame():
 # f3.setFactorName("Companionship")
 # f3.setFactorValue(5)
 
-# test_chart.prosAddFactor(f1)
-# test_chart.prosAddFactor(f2)
-# test_chart.consAddFactor(f3)
-
+# temp_chart.prosAddFactor(f1)
+# temp_chart.prosAddFactor(f2)
+# temp_chart.consAddFactor(f3)
 
 drawFrame()
 root.mainloop()
