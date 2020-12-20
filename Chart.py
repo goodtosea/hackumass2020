@@ -47,18 +47,18 @@ class Chart:
 
         # Compares suggested values to a list of ratios, generating a suggestion
         if (suggValue < 0.33):
-            suggestion = "Highly recommend you do not do this."
+            suggestion = "Highly recommend you do not"
         elif (0.33 <= suggValue < 0.45):
-            suggestion = "You probably shouldn't do this."
+            suggestion = "You probably shouldn't do it"
         elif (0.45 <= suggValue < 0.5):
-            suggestion = "It's close... you may consider against this."
+            suggestion = "It's close... you may consider against it"
         elif (suggValue == 0.5):
             suggestion = "You probably won't go wrong either way... coin flip?"
         elif (0.5 < suggValue <= 0.55):
-            suggestion = "It's close... you may consider doing this."
+            suggestion = "It's close... you may consider doing it"
         elif (0.55 < suggValue <= 0.66):
-            suggestion = "You probably should do this."
+            suggestion = "You probably should do it"
         elif (suggValue > 0.66):
-            suggestion = "Highly recommend you do this."
+            suggestion = "Highly recommend you do"
 
         return suggestion
