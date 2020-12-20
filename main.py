@@ -19,7 +19,6 @@ def newFile():                                  # Resets working_chart's chart t
     global open_name
     open_name = False
     drawChart(working_chart.getChart())
-    
 
 
 def openFile():                                 # Opens existing chart
@@ -37,12 +36,16 @@ def saveFileAs():                               # Saves a chart as a new file
     chart_file = filedialog.asksaveasfilename(defaultextension=".vof", initialdir="C:/valueOf", title="Save File",
                                               filetypes=(("Text Files", "*.txt"), ("All Files", "*.*")))
     if chart_file:
+        drawChart(working_chart)
+        saveCurrentChart()
         working_chart.exportChart(chart_file)
 
 
 def saveFile():                                 # Overwrites saved chart, or if not saved, saves chart as new file
     global open_name
     if open_name:
+        drawChart(working_chart)
+        saveCurrentChart()
         working_chart.exportChart(open_name)
     else:
         saveFileAs()
@@ -66,8 +69,8 @@ def drawFrame():                                # Draws the frame (outside of th
     file_menu.add_command(label="New Chart", command=newFile) #lambda: drawChart(test_chart)
     file_menu.add_command(label="Open Chart", command=openFile)
     file_menu.add_separator()
-    file_menu.add_command(label="Save As")
-    file_menu.add_command(label="Save")
+    file_menu.add_command(label="Save As", command=saveFileAs)
+    file_menu.add_command(label="Save", command=saveFile)
     file_menu.add_separator()
     file_menu.add_command(label="Exit", command=exitProgram)
 
@@ -95,6 +98,8 @@ def drawChart(chart):
     consideration_entry = Entry(root)
     consideration_entry.insert(END, chart.getConsideration())
     consideration_entry.grid(column=3, row=1)
+    consideration_entry_list.clear()
+    consideration_entry_list.append(consideration_entry)
     # Entry(root, text=chart.getConsideration()).grid(column=3, row=1)
     Label(root, text="Pros", relief="groove", borderwidth=1).grid(column=1, columnspan=2, row=2, sticky=NSEW)
     Label(root, text="Cons", relief="groove", borderwidth=1).grid(column=4, columnspan=2, row=2, sticky=NSEW)
@@ -151,13 +156,24 @@ def pressedNewEntry():
     x = 5
 
 
+def saveCurrentChart():
+    chart_to_save = Chart(consideration_entry_list[0])
+    for i in range(len(pro_entry_list)):
+        chart_to_save.prosAddFactor(Factor(pro_entry_list[i].get(1.0, END), pro_combobox_list[i].get()))
+
+    for i in range(len(con_entry_list)):
+        chart_to_save.consAddFactor(Factor(con_entry_list[i].get(1.0, END), con_combobox_list[i].get()))
+
+    working_chart.setChart(chart_to_save)
+
+
 working_chart = theChart(Chart())
 
+consideration_entry_list = []
 pro_entry_list = []
 con_entry_list = []
 pro_combobox_list = []
 con_combobox_list = []
-
 
 
 drawFrame()

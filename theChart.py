@@ -16,6 +16,10 @@ class theChart:
         return self.chart
 
 
+    def setChart(self, chart):
+        self.chart = chart
+
+
     def readChart(self, file):
         # Reads file and creates a chart
         f = open(file, "r")
