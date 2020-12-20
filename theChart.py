@@ -5,10 +5,16 @@ from Factor import Factor
 
 class theChart:
     def __init__(self, chart):
-        self.chart = Chart()
+        self.chart = chart
+
 
     def resetChart(self):                               # Used in New File function
         self.chart = Chart()
+
+    
+    def getChart(self):
+        return self.chart
+
 
     def readChart(self, file):
         # Reads file and creates a chart
@@ -32,6 +38,7 @@ class theChart:
             conFactor = Factor(factorInfo[1], int(factorInfo[0]))
             self.chart.consAddFactor(conFactor)
         f.close()
+
 
     def exportChart(self, file):                        # Used in Save File function
         f = open(file, "w")
