@@ -154,11 +154,9 @@ def drawChart(chart):
     print(pro_combobox_list)
     print(con_combobox_list)
 
-
 # Adds a new entry to the table
 def pressedNewEntry():
     x = 5
-
 
 def saveCurrentChart():
     chart_to_save = Chart(consideration_entry_list[0])
@@ -174,6 +172,7 @@ def saveCurrentChart():
 working_chart = theChart(Chart())
 
 consideration_entry_list = []
+
 pro_entry_list = []
 con_entry_list = []
 pro_combobox_list = []
